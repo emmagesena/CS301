@@ -82,65 +82,21 @@ def findEights():
     return eights
 
 
-#Gives each letter from the alphabet a 'score' based on how many occurences there are in eight letter words
-def scoreAlphabet():
-    alphabet = {
-        'a' : 0,
-        'b' : 0,
-        'c' : 0,
-        'd' : 0,
-        'e' : 0,
-        'f' : 0,
-        'g' : 0,
-        'h' : 0,
-        'i' : 0,
-        'j' : 0,
-        'k' : 0,
-        'l' : 0,
-        'm' : 0,
-        'n' : 0,
-        'o' : 0,
-        'p' : 0,
-        'q' : 0,
-        'r' : 0,
-        's' : 0,
-        't' : 0,
-        'u' : 0,
-        'v' : 0,
-        'w' : 0,
-        'x' : 0,
-        'y' : 0,
-        'z' : 0
-        }
+def findAnagrams(wordList):
 
-    for i in range(len(eightLetterWords)):
-        for j in range(len(eightLetterWords[i])):
-            if eightLetterWords[i][j] in alphabet.keys():
-                alphabet[eightLetterWords[i][j]] += 1
-           
-    return alphabet
+    anagramCounts = {}
 
+    #Sort all characters alphabetically
+    for i in range(len(wordList)):
+        sortedChars = sorted(wordList[i])
+        wordList[i] = "".join(sortedChars)
 
-def sortAlphabet(dictionary):
     
-    sortedKeys = sorted(dictionary, key=dictionary.get, reverse=True)
-    sortedDict = {}
+    from collections import Counter
 
-    for i in sortedKeys:
-        sortedDict[i] = dictionary[i]
+    anagramCounts = Counter(wordList)
 
-    letters = []
-    letters = sortedDict.keys()
-
-    return list(letters)
-   
-
-
-
-
-
-
-
+    return anagramCounts
 
 #Read words.txt and store words into list 
 
@@ -152,11 +108,18 @@ for i in range(len(words)):
     
         
 
+
 # Question 1: What is the sum of the first n positive integers?
 
 print("\nQuestion 1 : What is the sum of the first n positve integers?")
 
-n = int(input("Enter value for n: "))
+while(True):
+    try:
+        n = int(input("Enter value for n: "))
+        break
+    except:
+        print("Integer not entered. Please try again")
+   
 
 currentNum = 1
 sum = 0
@@ -195,11 +158,11 @@ for i in range(7):
 
 checkWord = input("Enter word to check for:")
 
-if wordValidatorBool(checkWord):
-    checkTiles(checkWord)
-else:
-    print("Word entered is not valid.")
-        
+while(not wordValidatorBool(checkWord)):
+    print("Word entered is not in dictionary. Please enter again.")
+    checkWord = input()
+
+checkTiles(checkWord)       
 
 # Question 4: Given a set of tiles, find all words you can make with them
 
@@ -255,15 +218,16 @@ SBWordFinder(puzzle,middleLetter)
 
 print("\nQuestion 6: What set(s) of eight letters forms the most possible bingos?")
 
-eightLetterWords = findEights()
-
-scoredAlphabet = scoreAlphabet()
+print("\nSets of 8 letters and the amount of anagrams they can form (most to least):\n")
 
 
-sortedLetters = sortAlphabet(scoredAlphabet)
+eightsWords = findEights()
 
-for i in range(8):
-    print(sortedLetters[i])
+rankedAnagrams = {}
+
+rankedAnagrams = findAnagrams(eightsWords)
+
+print(rankedAnagrams)
 
 
 
