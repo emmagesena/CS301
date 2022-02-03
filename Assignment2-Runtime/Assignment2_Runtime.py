@@ -111,6 +111,61 @@ def testList_deleteEnd(testList):
     t1 = time.time()
 
     return t1-t0
+        
+ def testList_deleteFront(testList):
+    list = testList.copy()
+
+    t0 = time.time()
+
+    ##
+    del list[0]
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+def testList_deleteMiddle(testList):
+    list = testList.copy()
+
+    t0 = time.time()
+
+    ##
+    del list[int(len(list)/2)]
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+def testList_deleteRandom(testList):
+    list = testList.copy()
+
+    t0 = time.time()
+
+    ##
+    del list[random.randint(0,len(testList)-1)]
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+
+def testList_inList(testList):
+    t0 = time.time()
+
+    ##
+    check = random.randint(0,len(testList)-1)
+
+    if check in testList:
+        print("Element found")
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
 
 ## Generate lists ##
 
