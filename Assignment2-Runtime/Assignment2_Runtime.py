@@ -192,31 +192,5 @@ dictLengths = [dictTen, dictHund, dictThou, dictTenThou, dictHundThou, dictMill]
 ## List Append Tests ##
 
 
-'''
-Following code is just to check my test functions are
-running correctly, we will want to 
-use them in a more sophisticated way to collect data 
-'''
-#result = testList_Append(ten)
-#print(result)
-
-#result =  testList_Append(mill)
-#print(result)
-
-#result = testList_insertFront(ten)
-#print(result)
-
-#result = testList_insertFront(mill)
-#print(result)
-
-#result = testList_insertMiddle(ten)
-#print(result)
-
-#result = testList_insertMiddle(mill)
-#print(result)
-
-#result = testList_insertRandom(ten)
-#print(result)
-
 #result = testList_insertRandom(mill)
 #print(result)
