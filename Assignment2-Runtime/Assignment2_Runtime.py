@@ -85,6 +85,62 @@ def testList_deleteEnd(testList):
 
     return t1-t0
 
+def testList_deleteFront(testList):
+    list = testList.copy()
+
+    t0 = time.time()
+
+    ##
+    del list[0]
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+def testList_deleteMiddle(testList):
+    list = testList.copy()
+
+    t0 = time.time()
+
+    ##
+    del list[int(len(list)/2)]
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+def testList_deleteRandom(testList):
+    list = testList.copy()
+
+    t0 = time.time()
+
+    ##
+    del list[random.randint(0,len(testList)-1)]
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+
+def testList_inList(testList):
+    t0 = time.time()
+
+    ##
+    check = random.randint(0,len(testList)-1)
+
+    if check in testList:
+        print("Element found")
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+
+
 ## Generate lists ##
 
 ten = list(range(1,11))
@@ -108,31 +164,3 @@ dictMill = generateDictionary(mill)
 ## List Append Tests ##
 
 
-'''
-Following code is just to check my test functions are
-running correctly, we will want to 
-use them in a more sophisticated way to collect data 
-'''
-#result = testList_Append(ten)
-#print(result)
-
-#result =  testList_Append(mill)
-#print(result)
-
-#result = testList_insertFront(ten)
-#print(result)
-
-#result = testList_insertFront(mill)
-#print(result)
-
-#result = testList_insertMiddle(ten)
-#print(result)
-
-#result = testList_insertMiddle(mill)
-#print(result)
-
-#result = testList_insertRandom(ten)
-#print(result)
-
-#result = testList_insertRandom(mill)
-#print(result)
