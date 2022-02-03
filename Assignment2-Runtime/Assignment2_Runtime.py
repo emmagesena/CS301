@@ -190,7 +190,3 @@ dictLengths = [dictTen, dictHund, dictThou, dictTenThou, dictHundThou, dictMill]
 ## Run tests ## 
 
 ## List Append Tests ##
-
-
-#result = testList_insertRandom(mill)
-#print(result)
