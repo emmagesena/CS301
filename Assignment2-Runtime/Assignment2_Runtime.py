@@ -188,6 +188,37 @@ def testList_len(testList):
     return t1-t0
 
 
+#Adding an item to a dictionary
+def testDictionary_add(testdictionary):
+    dictionary=testdictionary.copy()
+    t0=time.time()
+    x=len(dictionary)
+    dictionary["item"] = x+1
+    t1=time.time()
+    return t1-t0
+
+
+#Removing an item from a dictionary
+#This takes a dictionary and removes the item that is index 1
+def testDictionary_delete(testdictionary):
+    dictionary=testdictionary.copy()
+    t0=time.time()
+    del dictionary[1]
+    t1=time.time()
+    return t1-t0
+
+#Check for an element
+def testDictionary_inDictionary(testdictionary):
+    dictionary=testdictionary.copy()
+    t0=time.time()
+    key="1"                         # This can be changed when we know what is in the dictionary
+    if key in dictionary:           #Nothing in the if statement because its outcome is does not matter
+        key=True
+    t1=time.time()
+    return t1-t0
+    
+
+
 ## Generate lists ##
 
 ten = list(range(1, 11))
