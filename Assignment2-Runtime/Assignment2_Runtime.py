@@ -164,10 +164,23 @@ def testList_inList(testList):
     t0 = time.time()
 
     ##
+    found = False
     check = random.randint(0, len(testList)-1)
 
     if check in testList:
-        print("Element found")
+        found = True
+    ##
+
+    t1 = time.time()
+
+    return t1-t0
+
+
+def testList_len(testList):
+    t0 = time.time()
+
+    ##
+    temp = len(testList)
     ##
 
     t1 = time.time()
@@ -213,6 +226,7 @@ benchmark(testList_deleteFront, listLengths, "testList_deleteFront")
 benchmark(testList_deleteMiddle, listLengths, "testList_deleteMiddle")
 benchmark(testList_deleteRandom, listLengths, "testList_deleteRandom")
 benchmark(testList_inList, listLengths, "testList_inList")
+benchmark(testList_len, listLengths, "testList_len")
 
 
 ## List Append Tests ##
