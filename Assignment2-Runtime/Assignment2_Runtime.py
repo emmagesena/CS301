@@ -6,12 +6,12 @@ import random
 
 # Benchmarking Function
 
-def benchmark(f, data):
+def benchmark(f, data, name):
     # lengths is the inputted lists of list/dictionaries that will run as N elements
     # intvl = 10 will mean each length N will run in the given function 10 times
-    intvl = 10
+    intvl = 100
 
-    f_out = open("runtimes_bench_output.csv", "w+")
+    f_out = open(name + ".csv", "w+")
 
     for n_elements in data:
         # --Write the number of elements N of a given list/dictionary--
@@ -204,7 +204,15 @@ dictLengths = [dictTen, dictHund, dictThou, dictTenThou,
 
 ## Run tests ##
 
-benchmark(testList_deleteFront, listLengths)
+benchmark(testList_Append, listLengths, "testList_Append")
+benchmark(testList_insertFront, listLengths, "testList_insertFront")
+benchmark(testList_insertMiddle, listLengths, "testList_insertMiddle")
+benchmark(testList_insertRandom, listLengths, "testList_insertRandom")
+benchmark(testList_deleteEnd, listLengths, "testList_deleteEnd")
+benchmark(testList_deleteFront, listLengths, "testList_deleteFront")
+benchmark(testList_deleteMiddle, listLengths, "testList_deleteMiddle")
+benchmark(testList_deleteRandom, listLengths, "testList_deleteRandom")
+benchmark(testList_inList, listLengths, "testList_inList")
 
 
 ## List Append Tests ##
