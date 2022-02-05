@@ -7,7 +7,10 @@ import random
 # Benchmarking Function
 
 def benchmark(f, data, name):
-    # lengths is the inputted lists of list/dictionaries that will run as N elements
+    # f is the inputted function that we will be benchmarking, the function
+    #   returns the total time it took for the list/dict function to operate
+    # data is the inputted lists of list/dictionaries that will run as N elements
+    # name is a string input that will be the outputted name of the .csv file
     # intvl = 10 will mean each length N will run in the given function 10 times
     intvl = 100
 
@@ -40,6 +43,8 @@ def generateDictionary(list):
 
     for i in range(len(list)):
         dict[strList[i]] = list[i]
+
+    return dict
 
 ## Testing functions ##
 
@@ -188,39 +193,52 @@ def testList_len(testList):
     return t1-t0
 
 
-#Adding an item to a dictionary
+# Adding an item to a dictionary
 def testDictionary_add(testdictionary):
-    dictionary=testdictionary.copy()
-    t0=time.time()
-    x=len(dictionary)
+    dictionary = testdictionary.copy()
+    t0 = time.time()
+    x = len(dictionary)
     dictionary["item"] = x+1
-    t1=time.time()
+    t1 = time.time()
     return t1-t0
 
+# Removing an item from a dictionary
+# This takes a dictionary and removes the item that is index 1
 
-#Removing an item from a dictionary
-#This takes a dictionary and removes the item that is index 1
+
 def testDictionary_delete(testdictionary):
-    dictionary=testdictionary.copy()
-    t0=time.time()
-    del dictionary[1]
-    t1=time.time()
+    dictionary = testdictionary.copy()
+    key = str(len(dictionary) // 2)
+    t0 = time.time()
+    del dictionary[key]
+    t1 = time.time()
     return t1-t0
 
-#Check for an element
-def testDictionary_inDictionary(testdictionary):
-    dictionary=testdictionary.copy()
-    t0=time.time()
-    key="1"                         # This can be changed when we know what is in the dictionary
-    if key in dictionary:           #Nothing in the if statement because its outcome is does not matter
-        key=True
-    t1=time.time()
+# Check for an element
+
+
+def testDictionary_inDictionaryMid(testdictionary):
+    dictionary = testdictionary.copy()
+    key = str(len(dictionary) // 2)
+    # This can be changed when we know what is in the dictionary
+    t0 = time.time()
+    if key in dictionary:  # Nothing in the if statement because its outcome is does not matter
+        key = True
+    t1 = time.time()
     return t1-t0
-    
+
+# Check length of dictionary
+
+
+def testDictionary_len(testdictionary):
+    dictionary = testdictionary.copy()
+    t0 = time.time()
+    temp = len(dictionary)
+    t1 = time.time()
+    return t1-t0
 
 
 ## Generate lists ##
-
 ten = list(range(1, 11))
 hund = list(range(1, 101))
 thou = list(range(1, 1001))
@@ -228,25 +246,13 @@ tenthou = list(range(1, 10001))
 hundthou = list(range(1, 100001))
 mill = list(range(1, 1000001))
 tenmill = list(range(1, 10000001))
-hundmill = list(range(1, 100000001))
-# <--- These will plug into bench func
 listLengths = [ten, hund, thou, tenthou,
-               hundthou, mill, tenmill, hundmill]
+               hundthou, mill, tenmill]
+# clear unneeded variables to free up memory
+del ten, hund, thou, tenthou, hundthou, mill, tenmill
 
-## Generate dictionaries ##
 
-dictTen = generateDictionary(ten)
-dictHund = generateDictionary(hund)
-dictThou = generateDictionary(thou)
-dictTenThou = generateDictionary(tenthou)
-dictHundThou = generateDictionary(hundthou)
-dictMill = generateDictionary(mill)
-dictTenMill = generateDictionary(tenmill)
-dictHundMill = generateDictionary(hundmill)
-dictLengths = [dictTen, dictHund, dictThou, dictTenThou,
-               dictHundThou, dictMill, dictTenMill, dictHundMill]  # <--- These will plug into bench func
-
-## Run tests ##
+## Run list tests ##
 
 benchmark(testList_Append, listLengths, "testList_Append")
 benchmark(testList_insertFront, listLengths, "testList_insertFront")
@@ -260,4 +266,25 @@ benchmark(testList_inList, listLengths, "testList_inList")
 benchmark(testList_len, listLengths, "testList_len")
 
 
-## List Append Tests ##
+## Generate dictionaries and free up memory ##
+
+dictTen = generateDictionary(listLengths[0])
+dictHund = generateDictionary(listLengths[1])
+dictThou = generateDictionary(listLengths[2])
+dictTenThou = generateDictionary(listLengths[3])
+dictHundThou = generateDictionary(listLengths[4])
+dictMill = generateDictionary(listLengths[5])
+dictTenMill = generateDictionary(listLengths[6])
+dictLengths = [dictTen, dictHund, dictThou, dictTenThou,
+               dictHundThou, dictMill, dictTenMill]  # <--- These will plug into bench func
+# clear unneeded variables to free up memory
+del listLengths, dictTen, dictHund, dictThou, dictTenThou, dictHundThou, dictMill, dictTenMill
+
+
+# Run dictionary tests
+
+benchmark(testDictionary_add, dictLengths, "testDictionary_add")
+benchmark(testDictionary_delete, dictLengths, "testDictionary_delete")
+benchmark(testDictionary_inDictionaryMid, dictLengths,
+          "testDictionary_inDictionaryMid")
+benchmark(testDictionary_len, dictLengths, "testDictionary_len")
