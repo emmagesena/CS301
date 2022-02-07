@@ -1,4 +1,5 @@
 ## Assignment 2 ##
+## by Hope Dannar, Emma Ogle, Logan Kulesus ##
 
 import time
 import random
