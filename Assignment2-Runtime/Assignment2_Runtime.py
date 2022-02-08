@@ -278,17 +278,22 @@ benchmark(testList_len, listLengths, "testList_len")
 
 ## Generate dictionaries and free up memory ##
 
-dictTen = generateDictionary(listLengths[0])
-dictHund = generateDictionary(listLengths[1])
-dictThou = generateDictionary(listLengths[2])
-dictTenThou = generateDictionary(listLengths[3])
-dictHundThou = generateDictionary(listLengths[4])
-dictMill = generateDictionary(listLengths[5])
-dictTenMill = generateDictionary(listLengths[6])
-dictLengths = [dictTen, dictHund, dictThou, dictTenThou,
-               dictHundThou, dictMill, dictTenMill]  # <--- These will plug into bench func
+dictOne = generateDictionary(listLengths[0])
+dictOneHund = generateDictionary(listLengths[1])
+dictTwoHund = generateDictionary(listLengths[2])
+dictThreeHund = generateDictionary(listLengths[3])
+dictFourHund = generateDictionary(listLengths[4])
+dictFiveHund = generateDictionary(listLengths[5])
+dictSixHund = generateDictionary(listLengths[6])
+dictSevHund = generateDictionary(listLengths[7])
+dictEightHund = generateDictionary(listLengths[8])
+dictNineHund = generateDictionary(listLengths[9])
+dictMil = generateDictionary(listLengths[10])
+
+dictLengths = [dictOne, dictOneHund, dictTwoHund, dictThreeHund,
+               dictFourHund, dictFiveHund, dictSixHund, dictSevHund, dictEightHund, dictNineHund, dictMil]  # <--- These will plug into bench func
 # clear unneeded variables to free up memory
-del listLengths, dictTen, dictHund, dictThou, dictTenThou, dictHundThou, dictMill, dictTenMill
+del listLengths, dictOne, dictOneHund, dictTwoHund, dictThreeHund, dictFourHund, dictFiveHund, dictSixHund, dictSevHund, dictEightHund, dictNineHund, dictMil
 
 
 # Run dictionary tests
