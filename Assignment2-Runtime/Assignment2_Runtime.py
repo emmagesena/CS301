@@ -253,7 +253,7 @@ sixhund = list(range(1, 600001))
 sevhund = list(range(1, 700001))
 eighthund = list(range(1, 800001))
 ninehund = list(range(1, 900001))
-mil = list(range(1, 10000001))
+mil = list(range(1, 1000001))
 
 listLengths = [one, onehund, twohund, threehund,
                fourhund, fivehund, sixhund, sevhund, eighthund, ninehund, mil]
