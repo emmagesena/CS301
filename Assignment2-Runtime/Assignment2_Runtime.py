@@ -83,10 +83,11 @@ list may be kind of dumb lol
 
 def testList_insertMiddle(testList):
     list = testList.copy()
+    middle = int(len(list)/2)
 
     t0 = time.time()
     ##
-    middle = int(len(list)/2)
+
     list.insert(middle, 1)
     ##
     t1 = time.time()
@@ -140,11 +141,12 @@ def testList_deleteFront(testList):
 
 def testList_deleteMiddle(testList):
     list = testList.copy()
+    middle = int(len(list))
 
     t0 = time.time()
 
     ##
-    del list[int(len(list)/2)]
+    del list[middle/2]
     ##
 
     t1 = time.time()
@@ -167,12 +169,13 @@ def testList_deleteRandom(testList):
 
 
 def testList_inList(testList):
-    t0 = time.time()
-
-    ##
     found = False
     check = random.randint(0, len(testList)-1)
 
+    t0 = time.time()
+
+    ##
+ 
     if check in testList:
         found = True
     ##
@@ -240,17 +243,23 @@ def testDictionary_len(testdictionary):
 
 
 ## Generate lists ##
-ten = list(range(1, 11))
-hund = list(range(1, 101))
-thou = list(range(1, 1001))
-tenthou = list(range(1, 10001))
-hundthou = list(range(1, 100001))
-mill = list(range(1, 1000001))
-tenmill = list(range(1, 10000001))
-listLengths = [ten, hund, thou, tenthou,
-               hundthou, mill, tenmill]
+one = list(range(1, 11))
+onehund = list(range(1, 100001))
+twohund = list(range(1, 200001))
+threehund = list(range(1, 300001))
+fourhund = list(range(1, 400001))
+fivehund = list(range(1, 500001))
+sixhund = list(range(1, 600001))
+sevhund = list(range(1, 700001))
+eighthund = list(range(1, 800001))
+ninehund = list(range(1, 900001))
+mil = list(range(1, 10000001))
+
+listLengths = [one, onehund, twohund, threehund,
+               fourhund, fivehund, sixhund, sevhund, eighthund, ninehund, mil]
 # clear unneeded variables to free up memory
-del ten, hund, thou, tenthou, hundthou, mill, tenmill
+del one, onehund, twohund, threehund, fourhund, fivehund, sixhund, sevhund, eighthund, ninehund, mil
+
 
 
 ## Run list tests ##
