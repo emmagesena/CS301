@@ -146,7 +146,7 @@ def testList_deleteMiddle(testList):
     t0 = time.time()
 
     ##
-    del list[middle/2]
+    del list[middle//2]
     ##
 
     t1 = time.time()
